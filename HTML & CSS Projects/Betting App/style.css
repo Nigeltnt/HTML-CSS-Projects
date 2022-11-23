@@ -1,0 +1,202 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@300;400;700&display=swap");
+
+$primary: #87ba7b;
+$primary-dark: mix(#0f3561, $primary, 35%);
+$primary-dark-2: mix(#0f3561, $primary, 45%);
+$text-color: #0f3561;
+$accent: #0f3561;
+$accent-light: mix(#ffffff, $accent, 65%);
+$accent-light-2: mix(#ffffff, $accent, 75%);
+$accent-light-3: mix(#ffffff, $accent, 80%);
+$accent-light-4: mix(#ffffff, $accent, 88%);
+
+$font-family: "Inter", sans-serif;
+$font-size: 16px;
+$base-size: 1em;
+$subtitle-size: 1.2em;
+$hero-size: 3em;
+$base-weight: 400;
+$medium-weight: 500;
+$title-weight: 700;
+
+* {
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  font-size: $hero-size;
+  font-weight: $title-weight;
+}
+h2 {
+  font-size: $subtitle-size;
+  font-weight: $title-weight;
+}
+
+body,
+html {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+body {
+  /* needed for demo only */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* needed for demo only */
+
+  height: 100%;
+  background-color: $accent-light;
+  font: $font-size $font-family;
+  line-height: 1.6;
+
+  color: $text-color;
+}
+
+.app {
+  /* needed for demo only */
+  margin: auto;
+  width: 375px;
+  height: 812px;
+  border: 12px solid #999aca;
+  border-radius: 48px;
+  overflow: hidden;
+  /* needed for demo only */
+
+  display: grid;
+  position: relative;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
+  grid-template-areas: "appbar" "content" "tabbar";
+  background-color: $primary;
+}
+.appbar {
+  $self: &;
+  display: grid;
+  grid-area: appbar;
+  grid-template-areas: "controls-left title controls-right";
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 24px;
+
+  &__controls-left {
+    grid-area: controls-left;
+  }
+  &__title {
+    grid-area: title;
+  }
+  &__title-text {
+    font-size: $subtitle-size;
+  }
+  &__controls-right {
+    grid-area: controls-right;
+  }
+  &--hero {
+    padding: 56px 24px;
+    background-color: $primary;
+    grid-template-areas: "title title controls-right";
+    #{ $self }__title-text {
+      font-size: $hero-size;
+    }
+  }
+}
+.content {
+  grid-area: content;
+  height: 100%;
+  padding: 32px 24px;
+  background-color: #ffffff;
+}
+.scrollview {
+  overflow: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.scrollview::-webkit-scrollbar {
+  width: 0px;
+}
+.backdrop {
+  border-radius: 24px;
+}
+.list {
+  &__item {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 16px 0 24px;
+    border-bottom: 1px solid $accent-light-2;
+    &:last-child {
+      border: none;
+    }
+  }
+  &__item-footer {
+    margin-top: 16px;
+    display: flex;
+    gap: 8px;
+  }
+  &__title {
+    margin-bottom: 16px;
+  }
+}
+
+.button {
+  border: none;
+  display: flex;
+  gap: 8px;
+  background-color: $primary-dark;
+  padding: 16px 24px;
+  font-weight: $medium-weight;
+  font-size: $base-size;
+  border-radius: 24px;
+  color: #ffffff;
+  transition: ease-in 0.12s;
+  &:active {
+    background-color: $primary-dark-2;
+  }
+  &--secondary {
+    color: $accent;
+    background-color: $accent-light-2;
+    &:active {
+      background-color: $accent-light;
+    }
+  }
+  &--tertiary {
+    color: $accent;
+    background-color: $accent-light-4;
+    &:active {
+      background-color: $accent-light-3;
+    }
+  }
+}
+.navigation {
+  display: flex;
+
+  gap: 52px;
+  justify-content: center;
+  padding: 16px 64px;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  background-color: $primary;
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 16px 24px;
+    border-radius: 24px;
+  }
+  &--item-current {
+    background-color: $primary-dark;
+    font-weight: $title-weight;
+    color: #ffffff;
+  }
+}
